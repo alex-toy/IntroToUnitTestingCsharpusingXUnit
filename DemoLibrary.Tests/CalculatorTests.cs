@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DemoLibrary;
+﻿using System.Collections.Generic;
 using Xunit;
 
 namespace DemoLibrary.Tests
@@ -16,12 +11,8 @@ namespace DemoLibrary.Tests
         [InlineData(double.MaxValue, 5, double.MaxValue)]
         public void Add_SimpleValuesShouldCalculate(double x, double y, double expected)
         {
-            // Arrange
-
-            // Act
             double actual = Calculator.Add(x, y);
 
-            // Assert
             Assert.Equal(expected, actual);
         }
 
@@ -29,26 +20,44 @@ namespace DemoLibrary.Tests
         [InlineData(8,4,2)]
         public void Divide_SimpleValuesShouldCalculate(double x, double y, double expected)
         {
-            // Arrange
-
-            // Act
             double actual = Calculator.Divide(x, y);
 
-            // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void Divide_DivideByZero()
         {
-            // Arrange
             double expected = 0;
 
-            // Act
             double actual = Calculator.Divide(15, 0);
 
-            // Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetCount_should_return_correct_count()
+        {
+            int[] nums = { 1, 2, 2, 3, 3, 3 };
+
+            Dictionary<int, int> actualCount = Calculator.GetCount(nums);
+
+            Assert.Equal(1, actualCount[1]);
+            Assert.Equal(2, actualCount[2]);
+            Assert.Equal(3, actualCount[3]);
+        }
+
+        [Fact]
+        public void GetCount_should_return_correct_count_v2()
+        {
+            int[] nums = { 1, 1, 1, 2, 2, 3 };
+
+            Dictionary<int, int> actualCount = Calculator.GetCount(nums);
+
+            Assert.Equal(3, actualCount[1]);
+            Assert.Equal(2, actualCount[2]);
+            Assert.Equal(1, actualCount[3]);
         }
     }
 }
+

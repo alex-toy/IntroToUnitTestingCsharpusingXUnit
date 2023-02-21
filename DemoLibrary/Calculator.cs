@@ -35,5 +35,25 @@ namespace DemoLibrary
                 return 0;
             }
         }
+
+        public static Dictionary<int, int> GetCount(int[] numbers)
+        {
+
+            Dictionary<int, int> counts = new Dictionary<int, int>();
+
+            foreach (int number in numbers)
+            {
+                if (!counts.ContainsKey(number))
+                {
+                    counts[number] = 1;
+                }
+                else
+                {
+                    counts[number]++;
+                }
+            }
+
+            return counts;
+        }
     }
 }
